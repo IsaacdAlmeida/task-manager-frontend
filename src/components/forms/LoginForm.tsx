@@ -9,8 +9,10 @@ import {
   Input,
   Stack,
   Text,
+  Link,
 } from '@chakra-ui/react';
 import { PasswordInput } from './PasswordInput';
+import { NavLink as ReachLink } from 'react-router-dom';
 
 export const LoginForm = () => (
   <Container 
@@ -24,9 +26,11 @@ export const LoginForm = () => (
           </Heading>
           <HStack spacing="1" justify="center">
             <Text color="muted">Novo no Task Manager?</Text>
-            <Button variant="link" colorScheme="blue">
-              Criar Conta
-            </Button>
+            <Link as={ReachLink} to="/cadastro">
+              <Button variant="link" colorScheme="blue">
+                Criar Conta
+              </Button>
+            </Link>
           </HStack>
         </Stack>
       </Stack>
