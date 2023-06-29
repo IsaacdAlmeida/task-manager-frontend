@@ -15,13 +15,16 @@ import { PasswordInput } from './PasswordInput';
 import { NavLink as ReachLink } from 'react-router-dom';
 
 export const LoginForm = () => (
-  <Container 
+  <Container
     maxW="lg" py={{ base: '12', md: '24' }} px={{ base: '0', sm: '8' }}
   >
-    <Stack spacing="8">
+    <Stack 
+      rounded={'lg'}
+      p={8}
+    >
       <Stack spacing="6">
         <Stack spacing={{ base: '2', md: '3' }} textAlign="center">
-          <Heading 
+          <Heading
             size={{ base: 'xs', md: 'sm' }}>Faça Login
           </Heading>
           <HStack spacing="1" justify="center">
@@ -43,7 +46,7 @@ export const LoginForm = () => (
       >
         <Stack spacing="6">
           <Stack spacing="5">
-            <FormControl>
+            <FormControl isRequired>
               <FormLabel htmlFor="email">Email</FormLabel>
               <Input id="email" type="email" />
             </FormControl>
