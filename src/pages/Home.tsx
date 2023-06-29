@@ -1,9 +1,9 @@
+import { MainHeader } from '../components/headers/MainHeader';
+
 export function Home() {
   return (
     <div>
-      <p>
-        Tela de Home
-      </p>
+      <MainHeader />
     </div>
   );
 }

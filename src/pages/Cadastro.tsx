@@ -1,9 +1,11 @@
+import CreateUserForm from '../components/forms/CreateUserForm';
+import { MainHeader } from '../components/headers/MainHeader';
+
 export function Cadastro() {
   return (
     <div>
-      <p>
-        Tela de Cadastro
-      </p>
+      <MainHeader />
+      <CreateUserForm />
     </div>
   );
 }
