@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { ChangeEvent, useState } from 'react';
 import { PasswordInput } from './PasswordInput';
-// import { createUser } from '../../services/fetchPetsAPI';
+import { createUser } from '../../services/fetchUserApi';
 
 interface FormData {
   nome: string;
@@ -41,8 +41,9 @@ export default function CreateUserForm() {
     }));
   };
 
-  const handleSubmit = () => {
-    // await createUser(formData);
+  const handleSubmit = async () => {
+    const { confirmarSenha, ...data } = formData;
+    await createUser(data);
     setFormData({
       nome: '',
       sobrenome: '',
