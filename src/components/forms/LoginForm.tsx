@@ -38,9 +38,9 @@ export default function LoginForm() {
   };
 
   const handleSubmit = async () => {
-    const token = await login(loginData);
+    const data = await login(loginData);
     
-    return token;
+    return data;
   };
 
   return (
