@@ -12,9 +12,12 @@ import {
   Link,
 } from '@chakra-ui/react';
 import { PasswordInput } from './PasswordInput';
-import { NavLink as ReachLink } from 'react-router-dom';
-import { ChangeEvent, useState } from 'react';
+import { NavLink as ReachLink, useNavigate } from 'react-router-dom';
+import { ChangeEvent, useState, useEffect } from 'react';
 import { login } from '../../services/fetchUserApi';
+import { RootState } from '../../redux/store';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook';
+import { setUser } from '../../redux/reducers/userSlice';
 
 interface LoginData {
   email: string;
@@ -22,10 +25,14 @@ interface LoginData {
 }
 
 export default function LoginForm() {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const [loginData, setLoginData] = useState<LoginData>({
     email: '',
     senha: '',
   });
+
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -40,8 +47,22 @@ export default function LoginForm() {
   const handleSubmit = async () => {
     const data = await login(loginData);
     
-    return data;
+    if (!data) {
+      console.log('deu ruim');
+    }
+
+    dispatch(setUser(data));
   };
+
+  
+  const token = useAppSelector((
+    state: RootState) => state.user.token);
+
+  useEffect(() => {
+    if (token) {
+      navigate('/home');
+    }
+  }, [token]);
 
   return (
     <Container

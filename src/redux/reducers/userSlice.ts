@@ -7,7 +7,7 @@ interface User {
   nome: string;
   sobrenome: string;
   email: string;
-  token: string;
+  token: string | null;
 }
 
 const initialState: User = {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080/api/auth',
+  baseURL: 'https://task-manager-production-4b8f.up.railway.app/api/auth',
 });
 
 interface UserInfos {

@@ -11,7 +11,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import userSlice from '../reducers/userSlice';
-// import { getTasks } from '../../services/fetchTasksAPI';
+import tasksSlice, { setTarefas } from '../reducers/tasksSlice';
+import { listarTarefas } from '../../services/fetchTasksApi';
 
 const persistConfig = {
   key: 'root',
@@ -21,6 +22,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: userSlice,
+  task: tasksSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -39,10 +41,11 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-// function fetchTasksToRedux() {
+// async function fetchTasksToRedux() {
 //   try {
-//     const tasks = getTasks();
-//     store.dispatch(setTasks(tasks));
+//     const response = await listarTarefas();
+//     const tasks = response.data;
+//     store.dispatch(setTarefas(tasks));
 //   } catch (error) {
 //     console.log(error);
 //   }

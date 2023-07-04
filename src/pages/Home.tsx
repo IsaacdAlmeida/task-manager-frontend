@@ -3,6 +3,7 @@ import { MainHeader } from '../components/headers/MainHeader';
 import { useAppSelector } from '../hooks/reduxHook';
 import { RootState } from '../redux/store';
 import { useEffect } from 'react';
+import TaskCard from '../components/cards/TaskCard';
 
 export function Home() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export function Home() {
   return (
     <div>
       <MainHeader />
+      <TaskCard />
     </div>
   );
 }
